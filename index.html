@@ -77,6 +77,112 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
 </footer>
+ /* ===============================
+      CANVAS STYLING
+      Adds visible border (required)
+   =============================== */
+   canvas {
+       border: 2px solid black;
+       margin-top: 15px;
+   }
+
+   /* Button spacing */
+   button {
+       margin: 5px;
+       padding: 10px;
+   }
+</style>
+
+<body>
+
+<div id="header" class="w3-container w3-flat-carrot">
+   <h1>App6---HTML5-Canvas</h1>
+</div>
+	
+<div id="content" class="w3-container">
+
+   <p>Content goes here.</p>
+
+   <!-- ===============================
+        CANVAS ELEMENT (REQUIRED)
+   =============================== -->
+   <canvas id="myCanvas" width="300" height="300"></canvas>
+
+   <br>
+
+   <!-- ===============================
+        REQUIRED BUTTONS (4 total)
+   =============================== -->
+   <button onclick="drawRectangle()">Draw Rectangle</button>
+   <button onclick="drawName()">Draw Name</button>
+   <button onclick="drawImage()">Load Image</button>
+   <button onclick="clearCanvas()">Clear Canvas</button>
+
+   <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin...</p>
+
+   <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+</div>
+
+<footer class="w3-bottom w3-container w3-flat-carrot">
+   <p>DIY!</p>
+</footer>
+
+<!-- ===============================
+    JAVASCRIPT FOR CANVAS FUNCTIONS
+=============================== -->
+<script>
+
+   // Get canvas element from HTML
+   var canvas = document.getElementById("myCanvas");
+
+   // Get drawing context (2D)
+   var ctx = canvas.getContext("2d");
+
+   // =====================================
+   // FUNCTION 1: Draw Rectangle
+   // Draws a blue rectangle on canvas
+   // =====================================
+   function drawRectangle() {
+       ctx.fillStyle = "blue"; // set color
+       ctx.fillRect(50, 50, 150, 100); // draw rectangle
+   }
+
+   // =====================================
+   // FUNCTION 2: Draw Name
+   // Displays your name on canvas
+   // =====================================
+   function drawName() {
+       ctx.font = "20px Arial"; // font style
+       ctx.fillStyle = "green"; // text color
+       ctx.fillText("Your Name", 80, 200); // CHANGE THIS
+   }
+
+   // =====================================
+   // FUNCTION 3: Draw Image
+   // Loads and draws image onto canvas
+   // =====================================
+   function drawImage() {
+       var img = new Image(); // create image object
+
+       // Replace with any image you want
+       img.src = "https://via.placeholder.com/150";
+
+       // Draw image AFTER it loads
+       img.onload = function() {
+           ctx.drawImage(img, 75, 75, 150, 150);
+       };
+   }
+
+   // =====================================
+   // FUNCTION 4: Clear Canvas
+   // Clears everything from canvas
+   // =====================================
+   function clearCanvas() {
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+   }
+
+</script>
 
 </body>
 </html>
