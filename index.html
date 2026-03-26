@@ -25,164 +25,140 @@ https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
 	
-   <head> 
-      <title>App6---HTML5-Canvas</title>  
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
-   </head> 
+  <!DOCTYPE html> 
+<html> 
 
+<head> 
+    <title>App6---HTML5-Canvas</title>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="w3-colors-flat.css">
 
-<script>
-var docMod = document.lastModified; // loads last modified time stamp into docMod variable
-alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.
-console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
-</script>
+    <!-- ===============================
+         STYLES (FIXED LOCATION)
+    =============================== -->
+    <style>	
+        .body {
+            margin: 0em;
+        }
 
+        .page {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -100vw;
+            overflow-y: auto;
+            z-index: 0;
+            background-color: hsl(0,0%,100%);
+        }
 
+        .page:target {
+            left: 0vw;
+            z-index: 1;
+        }
 
-<style>	
-.body {
-     margin: 0em;
-}
-.page {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    overflow-y: auto;
-    z-index: 0;
-    background-color: hsl(0,0%,100%);
-}
-  .page:target {
-    left: 0vw;
-    z-index: 1;
-}
-</style>
+        /* Canvas styling */
+        canvas {
+            border: 2px solid black;
+            margin-top: 15px;
+        }
 
-<body>
-<div id="header" class="w3-container w3-flat-carrot">
-	<h1>App6---HTML5-Canvas</h1>
-</div>
-	
-<div id="content" class="w3-container">
-	<p>Content goes here.</p>
-		
-	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
- 	
-	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+        /* Button styling */
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
 
-<footer class="w3-bottom w3-container w3-flat-carrot">
-	<p>DIY!</p>
-</footer>
- /* ===============================
-      CANVAS STYLING
-      Adds visible border (required)
-   =============================== */
-   canvas {
-       border: 2px solid black;
-       margin-top: 15px;
-   }
+    <!-- ===============================
+         PROVIDED SCRIPT (KEPT)
+    =============================== -->
+    <script>
+        var docMod = document.lastModified;
+        alert("This file last modified " + docMod);
+        console.log("This file last modified " + docMod);
+    </script>
 
-   /* Button spacing */
-   button {
-       margin: 5px;
-       padding: 10px;
-   }
-</style>
+</head> 
 
 <body>
 
 <div id="header" class="w3-container w3-flat-carrot">
-   <h1>App6---HTML5-Canvas</h1>
+    <h1>App6---HTML5-Canvas</h1>
 </div>
 	
 <div id="content" class="w3-container">
 
-   <p>Content goes here.</p>
+    <p>Content goes here.</p>
 
-   <!-- ===============================
-        CANVAS ELEMENT (REQUIRED)
-   =============================== -->
-   <canvas id="myCanvas" width="300" height="300"></canvas>
+    <!-- ===============================
+         CANVAS
+    =============================== -->
+    <canvas id="myCanvas" width="300" height="300"></canvas>
 
-   <br>
+    <br>
 
-   <!-- ===============================
-        REQUIRED BUTTONS (4 total)
-   =============================== -->
-   <button onclick="drawRectangle()">Draw Rectangle</button>
-   <button onclick="drawName()">Draw Name</button>
-   <button onclick="drawImage()">Load Image</button>
-   <button onclick="clearCanvas()">Clear Canvas</button>
+    <!-- ===============================
+         BUTTONS (REQUIRED 4)
+    =============================== -->
+    <button onclick="drawRectangle()">Draw Rectangle</button>
+    <button onclick="drawName()">Draw Name</button>
+    <button onclick="drawImage()">Load Image</button>
+    <button onclick="clearCanvas()">Clear Canvas</button>
 
-   <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin...</p>
+    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream...</p>
 
-   <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+    <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
 
 </div>
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
-   <p>DIY!</p>
+    <p>DIY!</p>
 </footer>
 
 <!-- ===============================
-    JAVASCRIPT FOR CANVAS FUNCTIONS
+     CANVAS JAVASCRIPT (FIXED ORDER)
 =============================== -->
 <script>
 
-   // Get canvas element from HTML
-   var canvas = document.getElementById("myCanvas");
+    // Get canvas AFTER page loads
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
 
-   // Get drawing context (2D)
-   var ctx = canvas.getContext("2d");
+    // Draw rectangle
+    function drawRectangle() {
+        ctx.fillStyle = "blue";
+        ctx.fillRect(50, 50, 150, 100);
+    }
 
-   // =====================================
-   // FUNCTION 1: Draw Rectangle
-   // Draws a blue rectangle on canvas
-   // =====================================
-   function drawRectangle() {
-       ctx.fillStyle = "blue"; // set color
-       ctx.fillRect(50, 50, 150, 100); // draw rectangle
-   }
+    // Draw name
+    function drawName() {
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "green";
+        ctx.fillText("Your Name", 80, 200);
+    }
 
-   // =====================================
-   // FUNCTION 2: Draw Name
-   // Displays your name on canvas
-   // =====================================
-   function drawName() {
-       ctx.font = "20px Arial"; // font style
-       ctx.fillStyle = "green"; // text color
-       ctx.fillText("Your Name", 80, 200); // CHANGE THIS
-   }
+    // Draw image
+    function drawImage() {
+        var img = new Image();
+        img.src = "https://via.placeholder.com/150";
 
-   // =====================================
-   // FUNCTION 3: Draw Image
-   // Loads and draws image onto canvas
-   // =====================================
-   function drawImage() {
-       var img = new Image(); // create image object
+        img.onload = function() {
+            ctx.drawImage(img, 75, 75, 150, 150);
+        };
+    }
 
-       // Replace with any image you want
-       img.src = "https://via.placeholder.com/150";
-
-       // Draw image AFTER it loads
-       img.onload = function() {
-           ctx.drawImage(img, 75, 75, 150, 150);
-       };
-   }
-
-   // =====================================
-   // FUNCTION 4: Clear Canvas
-   // Clears everything from canvas
-   // =====================================
-   function clearCanvas() {
-       ctx.clearRect(0, 0, canvas.width, canvas.height);
-   }
+    // Clear canvas
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
