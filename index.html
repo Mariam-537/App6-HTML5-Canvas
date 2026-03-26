@@ -20,7 +20,7 @@ Brief Description of Goal of Code:
 the goal of this code is to be able to generate a canvas that can draw a rectangle, my name, generate an image and also be cleared on the click of the buttons
  
 Known Issues:
-This code is not very developed because it is practice, this shouldn't be used for a real app without significant editing.
+This code is not very developed because it is practice, this shouldn't be used for a real app without significant editing. I also know that the image looks squished when it is rendered in. This is something to consider, I dpn't really know how to fix it. 
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
@@ -35,9 +35,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="w3-colors-flat.css">
 
-    <!-- ===============================
-         STYLES (FIXED LOCATION)
-    =============================== -->
+    <!-- style that was provide by the base code, I did not change this -->
     <style>	
         .body {
             margin: 0em;
@@ -59,21 +57,20 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
             z-index: 1;
         }
 
-        /* Canvas styling */
+        
         canvas {
             border: 2px solid black;
             margin-top: 15px;
         }
 
-        /* Button styling */
+       
         button {
             margin: 5px;
             padding: 10px;
-        }
+        } 
     </style>
 
-    <!-- ===============================
-    =============================== -->
+    <!-- This the provided code that shows me when the page was last modified so I know whether there is a lag on GitHub  -->
     <script>
         var docMod = document.lastModified;
         alert("This file last modified " + docMod);
@@ -90,35 +87,31 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	
 <div id="content" class="w3-container">
 
-    <p>Content goes here.</p>
-
-    <!-- ===============================
-         CANVAS
-    =============================== -->
+    <!--
+         CANVAS, this tells the code the size of the canvas and created an id for it so it can pull up later -->
     <canvas id="myCanvas" width="300" height="300"></canvas>
 
     <br>
 
-    <!-- ===============================
+    <!--
          This is like the cold and allergy button what to do when each of them are clicked, the functions of the buttons themselves will be coded below
-    =============================== -->
-    <button onclick="drawRectangle()">Draw Rectangle</button>
-    <button onclick="drawName()">Draw Name</button>
-    <button onclick="drawImage()">Load Image</button>
-    <button onclick="clearCanvas()">Clear Canvas</button>
-
-    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream</p>
-
-    <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+   -->
+    <button onclick="drawRectangle()"
+		>Draw Rectangle</button> <!-- this is the button for the rectangle-->
+    <button onclick="drawName()"
+		>Draw Name</button> <!-- this is the button for the name-->
+    <button onclick="drawImage()"
+		>Load Image</button> <!-- this is the button for the image-->
+    <button onclick="clearCanvas()"
+		>Clear Canvas</button> <!-- this is the button to clear the canvas-->
 
 </div>
-
+<!-- below is the footer provided by the base code, this says DIY in the footer of the page --> 
 <footer class="w3-bottom w3-container w3-flat-carrot">
     <p>DIY!</p>
 </footer>
 
-<!-- 
-     Canvas and its functions -->
+<!--  Canvas and its functions: -->
 <script>
 
     // Get canvas AFTER page loads, this will show the box that acts as the canvas for the app 
