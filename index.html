@@ -7,7 +7,7 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
 Authors in chronological order of contribution:
 Tim Riedel
-Author 2
+Mariam Hamouie
  
 Further Information:
 http://cns.utexas.edu/fri
@@ -17,10 +17,10 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
+the goal of this code is to be able to generate a canvas that can draw a rectangle, my name, generate an image and also be cleared on the click of the buttons
  
 Known Issues:
-blah, blah, blah, blah
+This code is not very developed because it is practice, this shouldn't be used for a real app without significant editing.
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
@@ -73,7 +73,6 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     </style>
 
     <!-- ===============================
-         PROVIDED SCRIPT (KEPT)
     =============================== -->
     <script>
         var docMod = document.lastModified;
@@ -101,14 +100,14 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     <br>
 
     <!-- ===============================
-         BUTTONS (REQUIRED 4)
+         This is like the cold and allergy button what to do when each of them are clicked, the functions of the buttons themselves will be coded below
     =============================== -->
     <button onclick="drawRectangle()">Draw Rectangle</button>
     <button onclick="drawName()">Draw Name</button>
     <button onclick="drawImage()">Load Image</button>
     <button onclick="clearCanvas()">Clear Canvas</button>
 
-    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream...</p>
+    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream</p>
 
     <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
 
@@ -118,39 +117,38 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     <p>DIY!</p>
 </footer>
 
-<!-- ===============================
-     CANVAS JAVASCRIPT (FIXED ORDER)
-=============================== -->
+<!-- 
+     Canvas and its functions -->
 <script>
 
-    // Get canvas AFTER page loads
+    // Get canvas AFTER page loads, this will show the box that acts as the canvas for the app 
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
 
     // Draw rectangle
     function drawRectangle() {
-        ctx.fillStyle = "blue";
-        ctx.fillRect(50, 50, 150, 100);
+        ctx.fillStyle = "blue"; //this function indicates the color of the rectangle 
+        ctx.fillRect(50, 50, 150, 100); //this function indicates the dimensions of the rectangle
     }
 
-    // Draw name
+    // Draw name, when clicked, this button will generate my name for the user
     function drawName() {
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "green";
-        ctx.fillText("Mariam", 80, 200);
+        ctx.font = "20px Arial"; //this function tells the code the font and the text size
+        ctx.fillStyle = "pink"; //this function tells the code the color that my name will appear in 
+        ctx.fillText("Mariam", 80, 200); //this function showcases my name 
     }
 
-    // Draw image
+    // Draw image, this function should pop up an image of a cat on the canvas
     function drawImage() {
         var img = new Image();
-        img.src = "https://unsplash.com/s/photos/cat";
+        img.src = "https://images.unsplash.com/photo-1518791841217-8f162f1e1131";
 
         img.onload = function() {
             ctx.drawImage(img, 75, 75, 150, 150);
         };
     }
 
-    // Clear canvas
+    // Clear canvas, when the button is clicked, this function will clear the canvas 
     function clearCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
